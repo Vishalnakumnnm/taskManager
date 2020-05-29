@@ -41,6 +41,7 @@
       <th>Task Description</th>
       <th>Start Time</th>
       <th>End Time</th>
+      <th>Action</th>
     </tr>
 
     <tr *ngFor="let data of taskServiceService.taskData | filter: searchText: fieldsToSearch" (click)="editData(data)">
@@ -48,6 +49,7 @@
       <th>{{data.desc}}</th>
       <th>{{data.startTime}}</th>
       <th>{{data.endtime}}</th>
+      <th><button (click)="deleteTask(data)">Delete</button></th>
     </tr>
   </table>
 

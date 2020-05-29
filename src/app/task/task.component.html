@@ -1,5 +1,6 @@
 <button [routerLink]="['/task/add-task']"> Create Task</button> <br><br>
 <button [routerLink]="['/task/list-task']"> List Taks</button>
+<button (click)="authService.logout()" style="float: right;">Logout</button>
 <!-- <app-create-task></app-create-task>
 <app-list-task></app-list-task> -->
-<router-outlet></router-outlet>  
+<router-outlet></router-outlet>

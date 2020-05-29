@@ -22,21 +22,30 @@ export class ListTaskComponent implements OnInit {
 			this.taskServiceService.taskData = JSON.parse(storedTaskData);
 		}
 
-		this.fieldsToSearch.push('name', 'desc', 'startTime', 'endTime');
+		this.fieldsToSearch.push('taskname', 'desc');
 		// this.sort('asc');
 	}
 
 	sort(opt: any = null) {
 		opt = (opt) ? opt : this.sortOrder;
 		if (opt == "asc") {
-			this.taskServiceService.taskData.sort((a, b) => (a.name > b.name) ? 1 : (b.name > a.name) ? -1 : 0);
+			this.taskServiceService.taskData.sort((a, b) => (a.taskname > b.taskname) ? 1 : (b.taskname > a.taskname) ? -1 : 0);
 		} else if (opt == "desc") {
-			this.taskServiceService.taskData.sort((a, b) => (a.name < b.name) ? 1 : (b.name < a.name) ? -1 : 0);
+			this.taskServiceService.taskData.sort((a, b) => (a.taskname < b.taskname) ? 1 : (b.taskname < a.taskname) ? -1 : 0);
 		}
 	}
 
 	editData(taskItem) {
 		this.taskServiceService.currentTask = taskItem;
 		this.route.navigate(['/task/add-task']);
+	}
+
+	deleteTask(taskItem) {
+		let index = this.taskServiceService.taskData.indexOf(taskItem);
+		if (index >= 0) {
+			this.taskServiceService.taskData.splice(index, 1);
+			localStorage.removeItem('taskData');
+			localStorage.setItem('taskData', JSON.stringify(this.taskServiceService.taskData));
+		}
 	}
 }

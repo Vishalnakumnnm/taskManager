@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-task',
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class TaskComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }

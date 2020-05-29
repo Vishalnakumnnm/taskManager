@@ -1,0 +1,31 @@
+<h3>Create a task list</h3>
+<form (ngSubmit)="submitForm()">
+
+    <div class="container">
+      <label for="uname"><b>taskname</b></label> &nbsp;&nbsp;
+      <input type="text" placeholder="Task name" name="taskname"  [(ngModel)]="taskname">
+
+      <br><br>
+
+      <label for="psw"><b>description</b></label> &nbsp;
+      <textarea placeholder="Description" name="desc"  [(ngModel)]="desc"></textarea>
+
+       <br><br>
+
+      <label for="psw"><b>Start Time</b></label> &nbsp;
+      <input type="text" placeholder="Start Time" name="startTime"  [(ngModel)]="startTime">
+
+       <br><br>
+
+      <label for="psw"><b>End Time</b></label> &nbsp;&nbsp;
+      <input type="text" placeholder="End Time" name="endtime"  [(ngModel)]="endtime">
+
+      <br><br>
+
+      <button>Create Task</button>
+        
+      
+    </div>
+
+ </form>
+ <label *ngIf="errorMessage">{{errorMessage}}</label>

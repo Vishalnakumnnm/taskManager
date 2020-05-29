@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Task List</h2>
+
+<label>Search by name</label> &nbsp;
+<input type="text" name="search" (input)='listAll()' [(ngModel)] = 'searchText'> <button (click)="searchTask()">Search</button>
+
+<label>Sort</label> &nbsp;
+<select (change)="sort()" [(ngModel)] = 'sortOrder'>
+	<option value="asc" selected>Ascending</option>
+	<option value="desc">Decending</option>
+</select>
+<table>
+
+<tr>
+    <th>Task Name</th>
+    <th>Task Description</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+  </tr>
+
+  <tr *ngFor="let data of taskData">
+    <th>{{data.name}}</th>
+    <th>{{data.desc}}</th>
+    <th>{{data.startTime}}</th>
+    <th>{{data.endtime}}</th>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<button style="float: right;color: blue" (click)="logout()">Logout</button>
+
+<form *ngIf="chekUserLogin == 'null'" class="modal-content animate" method="post" (ngSubmit)="submitForm()">
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname"  [(ngModel)]="usreName">
+
+      <br><br>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw"  [(ngModel)]="pass">
+
+      <br><br>
+        
+      <button type="submit">Login</button> &nbsp;
+
+    </div>
+
+    <label *ngIf="loginError">{{loginError}}</label>
+ </form>

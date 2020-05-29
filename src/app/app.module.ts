@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskComponent } from './task/task.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ListTaskComponent } from './list-task/list-task.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ListTaskComponent } from './list-task/list-task.component';
     LoginComponent,
     TaskComponent,
     CreateTaskComponent,
-    ListTaskComponent
+    ListTaskComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

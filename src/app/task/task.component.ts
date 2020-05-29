@@ -13,11 +13,4 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  AddTask(){
-  	this.router.navigate(['add-task']);
-  }
-  ListTask(){
-  	this.router.navigate(['list-task']);
-  }
-
 }

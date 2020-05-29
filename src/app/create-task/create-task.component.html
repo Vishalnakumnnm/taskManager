@@ -1,31 +1,30 @@
 <h3>Create a task list</h3>
 <form (ngSubmit)="submitForm()">
 
-    <div class="container">
-      <label for="uname"><b>taskname</b></label> &nbsp;&nbsp;
-      <input type="text" placeholder="Task name" name="taskname"  [(ngModel)]="taskname">
+  <div class="container">
+    <label for="uname"><b>taskname</b></label> &nbsp;&nbsp;
+    <input type="text" placeholder="Task name" name="taskname" [(ngModel)]="taskServiceService.currentTask.taskname">
 
-      <br><br>
+    <br><br>
 
-      <label for="psw"><b>description</b></label> &nbsp;
-      <textarea placeholder="Description" name="desc"  [(ngModel)]="desc"></textarea>
+    <label for="psw"><b>description</b></label> &nbsp;
+    <textarea placeholder="Description" name="desc" [(ngModel)]="taskServiceService.currentTask.desc"></textarea>
 
-       <br><br>
+    <br><br>
 
-      <label for="psw"><b>Start Time</b></label> &nbsp;
-      <input type="text" placeholder="Start Time" name="startTime"  [(ngModel)]="startTime">
+    <label for="psw"><b>Start Time</b></label> &nbsp;
+    <input type="date" placeholder="Start Time" name="startTime" [(ngModel)]="taskServiceService.currentTask.startTime">
 
-       <br><br>
+    <br><br>
 
-      <label for="psw"><b>End Time</b></label> &nbsp;&nbsp;
-      <input type="text" placeholder="End Time" name="endtime"  [(ngModel)]="endtime">
+    <label for="psw"><b>End Time</b></label> &nbsp;&nbsp;
+    <input type="date" placeholder="End Time" name="endtime" [(ngModel)]="taskServiceService.currentTask.endtime">
 
-      <br><br>
+    <br><br>
 
-      <button>Create Task</button>
-        
-      
-    </div>
+    <button>Create Task</button>
 
- </form>
- <label *ngIf="errorMessage">{{errorMessage}}</label>
+  </div>
+
+</form>
+<label *ngIf="errorMessage">{{errorMessage}}</label>

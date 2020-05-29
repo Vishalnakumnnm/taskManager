@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 })
 export class TaskServiceService {
 
-	public taskData:any = [];
-	public filterData:any = [];
+  public taskData: any = [];
+  public filterData: any = [];
+  public currentTask: any = {};
   constructor() { }
 }

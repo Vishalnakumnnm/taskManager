@@ -3,11 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { TaskComponent } from './task/task.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ListTaskComponent } from './list-task/list-task.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-{ path: 'task', component: TaskComponent },
-{ path: 'add-task', component: CreateTaskComponent },
-{ path: 'list-task', component: ListTaskComponent },
+  { path: '', redirectTo: '/task', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'task', component: TaskComponent, canActivate: [AuthGuard], children: [
+      { path: 'add-task', component: CreateTaskComponent },
+      { path: 'list-task', component: ListTaskComponent },
+    ]
+  },
 ];
 
 @NgModule({

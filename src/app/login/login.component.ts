@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,44 +10,39 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  public usreName:any;
-  public pass:any;
-  public isSubmit:any = false;
-  public loginError:any;
-  public chekUserLogin:any;
+  public userName: any;
+  public pass: any;
+  public isSubmit: any = false;
+  public loginError: any;
+  public chekUserLogin: any;
 
-  constructor( private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    this.chekUserLogin = localStorage.getItem('userLogin');
-    debugger
-    if(this.chekUserLogin && this.chekUserLogin != 'null'){
+    if (this.authService.getToken()) {
       this.router.navigate(['task']);
-    }else{
-      this.router.navigate(['/']);
     }
   }
 
-  submitForm(){
-  	this.loginError= "";
-  	this.isSubmit = false;
-  	if(this.usreName == "admin" && this.pass == "123"){
-      localStorage.setItem('userLogin', "yes");
-      this.chekUserLogin = "userLogin";
+  submitForm() {
+    this.loginError = "";
+    this.isSubmit = false;
+    if (this.userName == "admin" && this.pass == "123") {
+      this.authService.setToken({ user: this.userName });
       this.isSubmit = true;
       this.router.navigate(['task']);
-  	}else if(this.usreName != "testuser" && this.pass == "123"){
-  		this.loginError = "Invalid user name";
-  	}else if(this.usreName == "testuser" && this.pass != "123"){
-  		this.loginError = "Invalid user password";
-  	}else{
-  		this.loginError = "Invalid user name and password";
-  	}
+    } else if (this.userName != "testuser" && this.pass == "123") {
+      this.loginError = "Invalid user name";
+    } else if (this.userName == "testuser" && this.pass != "123") {
+      this.loginError = "Invalid user password";
+    } else {
+      this.loginError = "Invalid user name and password";
+    }
   }
 
-  logout(){
-    localStorage.setItem('userLogin', null);
-    this.chekUserLogin = "null";
+  logout() {
+    this.authService.logout();
+    this.chekUserLogin = null;
     this.router.navigate(['/']);
   }
 
